@@ -6,6 +6,11 @@ public partial class Sprite2d : Sprite2D
 	private int _speed = 400;
 	private float _angularSpeed = Mathf.Pi;
 
+	[Signal]
+	private delegate void HealthDeletedEventHandler();
+
+	private int _health = 100;
+
 	public Sprite2d()
 	{
 		GD.Print("Hellow World");
@@ -53,6 +58,13 @@ public partial class Sprite2d : Sprite2D
 	private void OnButtonPressed()
 	{
 		this.SetProcess(!this.IsProcessing());
+	}
+
+	public void TakeDamage(int damage)
+	{
+		_health -= damage;
+		
+		EmitSignal(SignalName.HealthDeleted);
 	}
 
 }
