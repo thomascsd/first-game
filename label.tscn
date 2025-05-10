@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8wnpwtp770k1"]
+
+[node name="Label" type="Label"]
+offset_left = 529.0
+offset_top = 359.0
+offset_right = 633.0
+offset_bottom = 382.0
+text = "Hellow World"
