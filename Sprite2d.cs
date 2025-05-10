@@ -11,6 +11,18 @@ public partial class Sprite2d : Sprite2D
 		GD.Print("Hellow World");
 	}
 
+	public override void _Ready()
+	{
+		var timer = this.GetNode<Timer>("Timer");
+		timer.Timeout += OnTimerTimeout;
+
+	}
+
+	private void OnTimerTimeout()
+	{
+		this.Visible = !this.Visible;
+	}
+
 	public override void _Process(double delta)
 	{
 		var velocity = Vector2.Zero;
@@ -25,7 +37,7 @@ public partial class Sprite2d : Sprite2D
 		// }
 
 		// this.Rotation += _angularSpeed * direction * (float)delta;
-		this.Rotation += _angularSpeed *  (float)delta;
+		this.Rotation += _angularSpeed * (float)delta;
 		velocity = Vector2.Up.Rotated(this.Rotation) * _speed;
 
 		// if (Input.IsActionPressed("ui_up"))
